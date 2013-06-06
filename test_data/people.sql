@@ -6,7 +6,6 @@ CREATE TABLE PEOPLE(
     , BIRTHDAY              DATE
     , IS_MARRIED             BOOLEAN
     , BLOOD_TYPE            VARCHAR(2)
-    , PREF_NAME             VARCHAR(255)
     , PHONE                 VARCHAR(40)
     , MOBILE_PHONE          VARCHAR(40)
     , MOBILE_PHONE_CAREER   VARCHAR(40)
@@ -5015,4 +5014,15 @@ INSERT INTO PEOPLE VALUES('田辺 雅之', 'たなべ まさゆき', 'tanabe_mas
 INSERT INTO PEOPLE VALUES('草野 和香', 'くさの わか', 'kusano_waka@example.com', 'female', '1957/12/16', 'true', 'O', '神奈川県', '083-913-4191', '080-4477-3875', 'ドコモ', '別盛り・混ぜ混ぜ派');
 INSERT INTO PEOPLE VALUES('本村 明慶', 'ほんむら あきよし', 'honnmura_akiyoshi@example.com', 'male', '1960/6/19', 'true', 'B', '秋田県', '033-938-1982', '090-4533-4398', 'ドコモ', '左ルー・混ぜ混ぜ派');
 
-inser
+
+
+
+UPDATE PEOPLE
+    SET MOBILE_PHONE_CAREER =
+                            CASE MOBILE_PHONE_CAREER
+                                WHEN 'ドコモ'       THEN 'DOCOMO'
+                                WHEN 'ツーカー'     THEN 'WILCOM'
+                                WHEN 'ソフトバンク' THEN 'SOFTBANK'
+                                WHEN 'au'           THEN 'AU'
+                                ELSE MOBILE_PHONE_CAREER
+                            END;
